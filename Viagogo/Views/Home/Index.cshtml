@@ -1,0 +1,23 @@
+﻿@model Viagogo.Models.SearchString
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE>
+<html>
+    <body>
+        <div>
+            <p class="text-danger">
+                @Session["found"]
+            </p>
+            <br>
+            Type the name of the artist you would like to see here:
+            <br>
+            <form action="~/Home/Lookup" method="post">
+                @Html.TextBoxFor(m=> Model.searchStr)<br>
+                <input type="submit" id="btnSend" value="Send" />
+            </form>
+        </div>
+    </body>
+</html>

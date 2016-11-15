@@ -1,0 +1,35 @@
+﻿@model List<Viagogo.Models.Ticket>
+
+@{
+    ViewBag.Title = "Buy";
+}
+
+<!DOCTYPE>
+<html>
+<body>
+    <div>
+        <table style="width:100%">
+            <tr>
+                <td>PRICE:</td>
+                <td>NO OF TICKETS:</td>
+                <td>DESCRIPTION:</td> 
+                <td>BUY FROM HERE:</td>            
+            </tr>
+            @{
+                foreach (var list in Model)
+                {
+                    <tr>
+                         <td>@list.price.Display</td>
+                         <td>@list.noOfTickets</td>
+                         @if (@list.description.Name != @list.description.Type)
+                         {<td>@list.description.Type - @list.description.Name</td>}
+                         else
+                         {<td>@list.description.Type</td>}
+                         <td><input type="submit" value="View Tickets here" class="button1" /></td>
+                    </tr>
+                }
+              }
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@model Viagogo.Models.FilterModel
+
+@{
+    ViewBag.Title = "Lookup";
+}
+
+<!DOCTYPE>
+<html>
+<head>
+</head>
+<body>
+    <div class="form-group">
+        <br>
+                @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+                {
+                    <label>Tickets:</label>
+                    @Html.TextBoxFor(m => m.noofTickets)
+                    <label>Start date:</label>
+                    @Html.TextBoxFor(m => m.filterDate)
+                    <label>End date:</label>
+                    @Html.TextBoxFor(m => m.filterDateE)
+                    <input type="submit" value="Filter" />
+                }
+        <br>
+        <table style="width:100%">
+            <tr>
+                <th>EVENT NAME:</th>
+                <th>EVENT DATE:</th>
+                <th>LOWEST PRICE:</th>
+                <th>TICKETS AVIALBLE:</th>
+                <th>BUY TICKETS</th>
+            </tr>
+            @{ 
+                foreach (var ev in Model.lst)
+                {
+                    <tr>
+                        <td>@ev.eventName</td>
+                        <td>@ev.eventDate</td>
+                        <td>@ev.minticketprice</td>
+                        <td>@ev.noofTickets</td>
+                        <td>@using (Html.BeginForm("Buy", "Ticket", new { id = @ev.id }))
+                        {
+                            <input type="submit" value="Buy" class="button1">
+                        }
+                        </td>
+                    </tr>
+               }
+            }
+        </table>
+    </div>
+</body>
+</html>
